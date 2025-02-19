@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="thymeleaf.org">
+<head>
+		<title>Listado de Medicos</title>
+		<style>
+			html{
+				background-color: #c5dec9;
+			}
+		</style>
+
+	<link rel="stylesheet" href="cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+		<h1 style="text-align: center;">Listado de Medicos</h1>
+		<h2  style="text-align: center;">
+			<a th:href="@{RegistrarMedico}" th:text="'nuevo registro'" 
+			title="crear un nuevo registro" class="btn btn-primary"></a>
+		</h2>
+		<table align="center" border="2">
+		<tr>
+			<th>Codigo</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Email</th>
+			<th>DNI</th>
+			<th>Est. Civil</th>
+			<th>Fecha Nac.</th>
+			<th>Acciones</th>
+		</tr>
+
+		<th:block th:each="p:${listado}">
+			<tr>
+				<td th:text="${p.IDMEDICOT3}"></td>
+				<td th:text="${p.NOMBRET3}"></td>
+				<td th:text="${p.APELLIDOT3}"></td>
+				<td th:text="${p.EMAILT3}"></td>
+				<td th:text="${p.DNIT3}"></td>
+				<td th:text="${p.ESTADOCIVILT3}"></td>
+				<td th:text="${#dates.format(p.FECHANACIMT3,'dd-MM-yyy')}"></td>
+				<td>
+					<a th:href="@{editarmedico/}+${p.IDMEDICOT3}" 
+					th:text="Editar" title="Editar Registro" class="btn btn-primary">				
+					</a>
+				</td>
+				<td>
+					<a th:href="@{eliminarmedico/}+${p.IDMEDICOT3}" 
+					th:text="Eliminar" title="Eliminar Registro" class="btn btn-warning">	
+					</a>
+				</td>		
+			</tr>
+		</th:block>
+		</table>
+
+	</body>
+</html>

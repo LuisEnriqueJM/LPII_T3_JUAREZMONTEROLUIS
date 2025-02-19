@@ -15,7 +15,7 @@ import jakarta.persistence.TemporalType;
 
 
 @Entity
-@Table(name="tbl_medico")
+@Table(name="TBL_MEDICOT3")
 public class TBL_MEDICO {
 	
 	
